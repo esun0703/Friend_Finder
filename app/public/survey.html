@@ -6,16 +6,23 @@
     <title>Friend Finder</title>
     <!--Jquery-->
     <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+     <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+    </script>
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <link href="style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   </head>
   <body>
-    <div>
-      <h4>Survey Questions</h4>
-    </div>
+    <div class="container">
+      <div>
+        <h4>Survey Questions</h4>
+      </div>
     <div class="row">
       <form class="col s12">
         <h5>About Me</h5>
@@ -30,7 +37,7 @@
         <div class="row">
           <div class="input-field col s6">
             <input id="last_name" type="text" class="validate">
-            <label for="last_name">Last Name</label>
+            <label for="last_name">Image</label>
           </div>
         </div>
 
@@ -39,7 +46,7 @@
           <div class="input-field col s12">
             <label>Question 1: Your Love For CSS Is Undying</label>
             <br><br>
-            <select class="browser-default">
+            <select>
               <option value="" disabled selected>Choose</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -54,7 +61,7 @@
           <div class="input-field col s12">
             <label>Question 2: You Love Traveling  </label>
             <br><br>
-            <select class="browser-default">
+            <select>
               <option value="" disabled selected>Choose</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -69,7 +76,7 @@
           <div class="input-field col s12">
             <label>Question 3: You Like Pina Coladas Getting Caught In The Rain</label>
             <br><br>
-            <select class="browser-default">
+            <select>
               <option value="" disabled selected>Choose</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -84,7 +91,7 @@
           <div class="input-field col s12">
             <label>Question 4: You Think Trump Looks Like A Giant Cheeto</label>
             <br><br>
-            <select class="browser-default">
+            <select>
               <option value="" disabled selected>Choose</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -99,7 +106,7 @@
           <div class="input-field col s12">
             <label>Question 5: You Enjoy Spontaneous Dance Parties In Your Living Room</label>
             <br><br>
-            <select class="browser-default">
+            <select>
               <option value="" disabled selected>Choose</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -114,7 +121,7 @@
           <div class="input-field col s12">
             <label>Question 6: You Wish You Lived In Harry Potter World</label>
             <br><br>
-            <select class="browser-default">
+            <select>
               <option value="" disabled selected>Choose</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -129,7 +136,7 @@
           <div class="input-field col s12">
             <label>Question 7: You Love Video Games</label>
             <br><br>
-            <select class="browser-default">
+            <select>
               <option value="" disabled selected>Choose</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -144,7 +151,7 @@
           <div class="input-field col s12">
             <label>Question 8: You Have A Dark Sense Of Humor</label>
             <br><br>
-            <select class="browser-default">
+            <select>
               <option value="" disabled selected>Choose</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -159,7 +166,7 @@
           <div class="input-field col s12">
             <label>Question 9: You Have An Obsession With Monster Energy Drinks</label>
             <br><br>
-            <select class="browser-default">
+            <select>
               <option value="" disabled selected>Choose</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -174,7 +181,7 @@
           <div class="input-field col s12">
             <label>Question 10: You Enjoy Doing Martial Arts</label>            <br/>
             <br><br>
-            <select class="browser-default">
+            <select>
               <option value="" disabled selected>Choose</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -190,11 +197,8 @@
         </button>
           <!--End-->
       </form>
+    </div>
   </body>
-  <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-        $('select').material_select();
-    });
+  
   </script>
  </html>
