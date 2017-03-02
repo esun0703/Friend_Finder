@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   </head>
   <body>
     <div class="container">
@@ -180,7 +180,7 @@
         <!--Question 10-->
         <div class="row">
           <div class="input-field col s12">
-            <label>Question 10: You Enjoy Doing Martial Arts</label>            <br/>
+            <label>Question 10: You Enjoy Doing Martial Arts</label>
             <br><br>
             <select>
               <option value="" disabled selected>Choose</option>
@@ -192,8 +192,7 @@
             </select>
           </div>
         </div>
-        <!--Submit Button-->
-         <!-- Modal Trigger -->
+        <!--Submit Button/Modal Trigger-->
         <button data-target="modal1" class="btn">Find Friend
           <i class="material-icons right">perm_identity</i>
         </button>
@@ -201,11 +200,14 @@
         <!-- Modal Structure -->
         <div id="modal1" class="modal">
           <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
+            <h4>Best Match</h4>
+            <h6 id="friendName"></h6>
+            <div id="friendImg">
+            </div>
           </div>
+          <!-- Modal Footer -->
           <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
           </div>
         </div>
         <!--End-->
