@@ -11,7 +11,7 @@ module.exports = function(app){
 	// 	GET route: "/api/friends": display a JSON of all possible
 	// post requests
 	// 	POST "/api/friends" handle incoming survey results
-	app.post("/api/tables", function(req,res){
+	app.post("/api/friends", function(req,res){
 		friendData.push(req.body);
 		res.json(true);
 	});
