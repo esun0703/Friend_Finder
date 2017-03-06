@@ -7,12 +7,7 @@
     <!--Jquery-->
     <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
      <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $('select').material_select();
-         $('.modal').modal();
-    });
-    </script>
+    <script type="text/javascript" src="js/js.js"></script>
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
@@ -25,7 +20,8 @@
         <h4>Survey Questions</h4>
       </div>
     <div class="row">
-      <form class="col s12">
+      <!---action = "/api/friends"-->
+      <form  method="POST" class="col s12">
         <h5>About Me</h5>
         <!--Name Input-->
         <div class="row">
@@ -37,14 +33,14 @@
         <!--Link For Image-->
         <div class="row">
           <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate">
-            <label for="last_name">Link To Photo Image (Required) </label>
+            <input id="person_image" type="text" class="validate">
+            <label for="person_image">Link To Photo Image (Required) </label>
           </div>
         </div>
 
         <!--Question 1-->
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s12" id="question1">
             <label>Question 1: Your Love For CSS Is Undying</label>
             <br><br>
             <select>
@@ -57,9 +53,10 @@
             </select>
           </div>
         </div>
+
         <!--Question 2-->
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s12" id="question2" >
             <label>Question 2: You Love Traveling  </label>
             <br><br>
             <select>
@@ -72,9 +69,10 @@
             </select>
           </div>
         </div>
+
         <!--Question 3-->
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s12" id="question3" >
             <label>Question 3: You Like Pina Coladas Getting Caught In The Rain</label>
             <br><br>
             <select>
@@ -87,9 +85,10 @@
             </select>
           </div>
         </div>
+
         <!--Question 4-->
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s12" id="question4">
             <label>Question 4: You Think Trump Looks Like A Giant Cheeto</label>
             <br><br>
             <select>
@@ -102,9 +101,10 @@
             </select>
           </div>
         </div>
+
         <!--Question 5-->
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s12" id="question5">
             <label>Question 5: You Enjoy Spontaneous Dance Parties In Your Living Room</label>
             <br><br>
             <select>
@@ -117,9 +117,10 @@
             </select>
           </div>
         </div>
+
         <!--Question 6-->
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s12" id="question6">
             <label>Question 6: You Wish You Lived In Harry Potter World</label>
             <br><br>
             <select>
@@ -132,9 +133,10 @@
             </select>
           </div>
         </div>
+
         <!--Question 7-->
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s12" id="question7">
             <label>Question 7: You Love Video Games</label>
             <br><br>
             <select>
@@ -147,9 +149,10 @@
             </select>
           </div>
         </div>
+
         <!--Question 8-->
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s12" id="question8">
             <label>Question 8: You Have A Dark Sense Of Humor</label>
             <br><br>
             <select>
@@ -162,9 +165,10 @@
             </select>
           </div>
         </div>
+
         <!--Question 9-->
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s12" id="question9">
             <label>Question 9: You Have An Obsession With Monster Energy Drinks</label>
             <br><br>
             <select>
@@ -177,9 +181,10 @@
             </select>
           </div>
         </div>
+
         <!--Question 10-->
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s12" id="question10" >
             <label>Question 10: You Enjoy Doing Martial Arts</label>
             <br><br>
             <select>
@@ -192,8 +197,9 @@
             </select>
           </div>
         </div>
+
         <!--Submit Button/Modal Trigger-->
-        <button data-target="modal1" class="btn">Find Friend
+        <button data-target="modal1" class="btn" id="submit" >Find Friend
           <i class="material-icons right">perm_identity</i>
         </button>
 
@@ -214,6 +220,31 @@
       </form>
     </div>
   </body>
-  
+  <!--handlers for get and post requests-->
+  <script type="text/javascript"> 
+      //takes front end and makes the posts
+      $(".submit").on("click", function(event){
+        event.preventDefault();
+
+        //where we keep the new form elements
+        var newFriend = {
+          "name":$("#first_name").val().trim(),
+          "photo":$("#person_image").val().trim(),
+          "scores":[
+             $("#question1").val(),
+             $("#question2").val(),
+             $("#question3").val(),
+             $("#question4").val(),
+             $("#question5").val(),
+             $("#question6").val(),
+             $("#question7").val(),
+             $("#question8").val(),
+             $("#question9").val(),
+             $("#question10").val(),
+           ]
+        };
+
+        console.log(newFriend);
+      })
   </script>
  </html>

@@ -16,12 +16,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:"application/vnd.api+json"}));
+//makes sure I can read my css files
+app.use(express.static(path.join(__dirname, './app/public')));
 
 
 //================================
 //Router: points to route files
-require("./app/routing/apiRoutes");
-require("./app/routing/htmlRoutes");
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
+
 
 //================================
 //Listener
