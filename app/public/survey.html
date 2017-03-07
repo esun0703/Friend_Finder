@@ -7,6 +7,9 @@
     <!--Jquery-->
     <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
     
+    <!--Jquery validation-->
+    <!-- <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script> -->
 
     <!--Materialize-->
      <script type="text/javascript" src="js/materialize.min.js"></script>
@@ -239,13 +242,14 @@
       // Form Validation Function
       function validateForm() {
         var isValid = true;
-        $('.validate').each(function() {
-          if ( $(this).val() === '' )
-              isValid = false;
-              console.log(this)
-        });
+        // $('.validate').each(function() {
+        //   if ( $(this).val() === '' )
+        //       isValid = false;
+        //       console.log(this)
+        // });
+      
 
-        //option:selected is specificially for Materialize
+      //   //option:selected is specificially for Materialize
         $('.chosen-select option:selected').each(function() {
 
           if( $(this).val() === "")
