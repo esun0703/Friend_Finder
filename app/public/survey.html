@@ -34,7 +34,7 @@
         <!--Name Input-->
         <div class="row">
           <div class="input-field col s6">
-            <input id="name" type="text" class="validate">
+            <input id="name" type="text" class="validate" required="required">
             <!--added data-placeholder, class validate helps with below javascript for validate function-->
             <label for="name">Name (Required)</label>
           </div>
@@ -42,7 +42,7 @@
         <!--Link For Image-->
         <div class="row">
           <div class="input-field col s6">
-            <input id="photo" type="text" class="validate">
+            <input id="photo" type="text" class="validate" required="required">
             <label for="photo">Link To Photo Image (Required) </label>
           </div>
         </div>
@@ -242,19 +242,22 @@
       // Form Validation Function
       function validateForm() {
         var isValid = true;
-        // $('.validate').each(function() {
-        //   if ( $(this).val() === '' )
-        //       isValid = false;
-        //       console.log(this)
-        // });
+        $('.validate').each(function() {
+          console.log($(this).val());
+          if ( $(this).val() === '' ) {
+              isValid = false;
+              console.log(this);
+            }
+        });
       
 
       //   //option:selected is specificially for Materialize
         $('.chosen-select option:selected').each(function() {
 
-          if( $(this).val() === "")
+          if( $(this).val() === "") {
             isValid = false;
             console.log(this)
+          }
         })
         return isValid;
       };
