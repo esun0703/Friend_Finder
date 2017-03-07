@@ -16,7 +16,7 @@
   </head>
   <body>
     <div class="container">
-      <div>
+      <div id="title">
         <h4>Survey Questions</h4>
       </div>
     <div class="row">
@@ -26,16 +26,16 @@
         <!--Name Input-->
         <div class="row">
           <div class="input-field col s6">
-            <input id="first_name" type="text" class="validate">
+            <input id="name" type="text" class="validate">
             <!--added data-placeholder, class validate helps with below javascript for validate function-->
-            <label for="first_name">Name (Required)</label>
+            <label for="name">Name (Required)</label>
           </div>
         </div>
         <!--Link For Image-->
         <div class="row">
           <div class="input-field col s6">
-            <input id="person_image" type="text" class="validate">
-            <label for="person_image">Link To Photo Image (Required) </label>
+            <input id="photo" type="text" class="validate">
+            <label for="photo">Link To Photo Image (Required) </label>
           </div>
         </div>
 
@@ -200,16 +200,20 @@
         </div>
 
         <!--Submit Button/Modal Trigger-->
-        <button data-target="modal1" class="btn" id="submit" >Find Friend
-          <i class="material-icons right">perm_identity</i>
-        </button>
+<!--         data-target="modal1"
+
+ -->        
+        <a class="waves-effect waves-light btn" href="#modal1"  id = "submit">Modal</a>
 
         <!-- Modal Structure -->
-        <div id="modal1" class="modal">
+        <div id="modal1" class="modal modal-fixed-footer">
           <div class="modal-content">
             <h4>Best Match</h4>
-            <h6 id="friendName"></h6>
-            <div id="friendImg">
+            <div id="friendBody">
+              <h6 id="friendName"></h6>
+              <div id="imageDiv">
+                <img id="friendImg" src="http://s2.quickmeme.com/img/e7/e7c608ed8a5cfd0cc3fd3511882a4b1d9ad2f8f452943c47238a002c2e085db3.jpg">
+              </div>
             </div>
           </div>
           <!-- Modal Footer -->
@@ -223,52 +227,74 @@
   </body>
   <!--handlers for get and post requests-->
   <script type="text/javascript"> 
-      function validate(){
-        var isValid = true;
-        $('.validate').each(function(){
-          if($(this).val()==='')
-            isValid = false;
-        });
+  
+    //takes front end and makes the posts
+    $("#submit").on("click", function(){
 
-        $()
-      }
-      //takes front end and makes the posts
-      $("#submit").on("click", function(event){
-        // console.log("hi");
-        event.preventDefault();
+      //validation function callback
+      //Form Validation Function
+      // function validate(){
+      //   var isValid = true;
+      //   $('.validate').each(function(){
+      //     if($(this).val() === '')
+      //       isValid = false;
+          
+      //   });
 
+      //   $('.chosen-select').each(function(){
+      //     if($(this).val() === "")
+      //       isValid = false;
+          
+      //   });
+        
+      //   return isValid;
+      // };
+
+      // //if validated
+      // if(validate() == true){
         //where we keep the new form elements
         var newFriend = {
-          "name":$("#first_name").val().trim(),
-          "photo":$("#person_image").val().trim(),
+          "name":$("#name").val(),
+          "photo":$("#photo").val(),
           "scores":[
-             parseInt($("#question1 option:selected").val()),
-             parseInt($("#question2 option:selected").val()),
-             parseInt($("#question3 option:selected").val()),
-             parseInt($("#question4 option:selected").val()),
-             parseInt($("#question5 option:selected").val()),
-             parseInt($("#question6 option:selected").val()),
-             parseInt($("#question7 option:selected").val()),
-             parseInt($("#question8 option:selected").val()),
-             parseInt($("#question9 option:selected").val()),
-             parseInt($("#question10 option:selected").val()),
+             // $("#q1 option:selected").val()),
+             $("#q1").val(),
+             $("#q2").val(),
+             $("#q3").val(),
+             $("#q4").val(),
+             $("#q5").val(),
+             $("#q6").val(),
+             $("#q7").val(),
+             $("#q8").val(),
+             $("#q9").val(),
+             $("#q10").val(),
            ]
         };
 
-        console.log(newFriend);
+        // Grab the URL of the website
+        var currentURL = window.location.origin;
+        
+        // console.log(newFriend);
 
-        //post information 
-        $.post("/api/friends", newFriend, 
-          function(data){
-            if(data){
-              // compare and post on modal
-              // console.log("yay you found a new friend")
-            }
-            else{
-              // console.log("sorry bud no friends for you")
-            }
+            //post information 
+        $.post(currentURL + "/api/friends", newFriend, function(data){
+            //grab result friend max from AJAXX post
+            $("#friendName").text(data.name);
+            // console.log("(survey.html: Your Best Match Is " + data.name);
+            $("#friendImg").attr("src", data.photo);    
         });
 
-      });
+
+    //   }//end of if statement
+      
+    //   // else {
+    //   //   alert("Please Fill Rest Of The Form");
+    //   // }
+
+    //   // return false;
+    });//end submit handler
+
+
+ 
   </script>
  </html>
