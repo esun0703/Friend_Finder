@@ -6,8 +6,13 @@
     <title>Friend Finder</title>
     <!--Jquery-->
     <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+    
+
+    <!--Materialize-->
      <script type="text/javascript" src="js/materialize.min.js"></script>
+     <!--Basic JS-->
     <script type="text/javascript" src="js/js.js"></script>
+
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
@@ -21,7 +26,7 @@
       </div>
     <div class="row">
       <!---action = "/api/friends"-->
-      <form  method="POST" class="col s12">
+      <form  id="surveyForm" class="col s12">
         <h5>About Me</h5>
         <!--Name Input-->
         <div class="row">
@@ -208,12 +213,10 @@
         <!-- Modal Structure -->
         <div id="modal1" class="modal modal-fixed-footer">
           <div class="modal-content">
-            <h4>Best Match</h4>
+            <h4 id="modalHeader"></h4>
             <div id="friendBody">
               <h6 id="friendName"></h6>
-              <div id="imageDiv">
-                <img id="friendImg" src="http://s2.quickmeme.com/img/e7/e7c608ed8a5cfd0cc3fd3511882a4b1d9ad2f8f452943c47238a002c2e085db3.jpg">
-              </div>
+              <img id="friendImg" src="">
             </div>
           </div>
           <!-- Modal Footer -->
@@ -227,32 +230,36 @@
   </body>
   <!--handlers for get and post requests-->
   <script type="text/javascript"> 
-  
+    
     //takes front end and makes the posts
     $("#submit").on("click", function(){
+      
 
-      //validation function callback
-      //Form Validation Function
-      // function validate(){
-      //   var isValid = true;
-      //   $('.validate').each(function(){
-      //     if($(this).val() === '')
-      //       isValid = false;
-          
-      //   });
+      // validation function callback
+      // Form Validation Function
+      function validateForm() {
+        var isValid = true;
+        $('.validate').each(function() {
+          if ( $(this).val() === '' )
+              isValid = false;
+              console.log(this)
+        });
 
-      //   $('.chosen-select').each(function(){
-      //     if($(this).val() === "")
-      //       isValid = false;
-          
-      //   });
-        
-      //   return isValid;
-      // };
+        //option:selected is specificially for Materialize
+        $('.chosen-select option:selected').each(function() {
 
-      // //if validated
-      // if(validate() == true){
-        //where we keep the new form elements
+          if( $(this).val() === "")
+            isValid = false;
+            console.log(this)
+        })
+        return isValid;
+      };
+
+      //if validated
+      if(validateForm() == true){
+        console.log("blargh");
+
+      //where we keep the new form elements
         var newFriend = {
           "name":$("#name").val(),
           "photo":$("#photo").val(),
@@ -278,23 +285,23 @@
 
             //post information 
         $.post(currentURL + "/api/friends", newFriend, function(data){
+            $("#modalHeader").text("Your Best Match Is: ")
             //grab result friend max from AJAXX post
             $("#friendName").text(data.name);
             // console.log("(survey.html: Your Best Match Is " + data.name);
             $("#friendImg").attr("src", data.photo);    
         });
 
-
-    //   }//end of if statement
-      
-    //   // else {
-    //   //   alert("Please Fill Rest Of The Form");
-    //   // }
-
-    //   // return false;
-    });//end submit handler
-
-
- 
+      //end of if statement   
+      } else {
+          console.log("need to fill out photo and image")
+          $("#modalHeader").text("Please Fill Out All Forms: ")
+          //grab result friend max from AJAXX post
+          $("#friendName").text("No Friends Yet: Fill Out Survey");
+          // console.log("(survey.html: Your Best Match Is " + data.name);
+          $("#friendImg").attr("src", "http://s2.quickmeme.com/img/e7/e7c608ed8a5cfd0cc3fd3511882a4b1d9ad2f8f452943c47238a002c2e085db3.jpg"); 
+      } 
+    //end submit handler  
+    });
   </script>
  </html>
